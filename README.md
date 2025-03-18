@@ -133,3 +133,105 @@ Close and re-open your terminal window for the installation to fully take effect
 ```bash
 source ~/.bashrc
 ```
+
+### **Managing Multiple Python Versions Using Anaconda Instead of `update-alternatives`**
+
+If you want to manage multiple Python versions using Anaconda instead of `update-alternatives`, follow these steps:
+
+---
+
+## **1. Download and Install Anaconda**
+### **Download the Latest Version**
+Run the following command to download the latest Anaconda installer (for Linux x86_64):
+```sh
+curl -O https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+```
+For other architectures, refer to the [Anaconda repository](https://repo.anaconda.com/archive/).
+
+### **Verify Installer Integrity (Recommended)**
+To ensure the installer is not corrupted:
+```sh
+sha256sum Anaconda3-2024.10-1-Linux-x86_64.sh
+```
+Compare the output hash with the one listed on the [Anaconda downloads page](https://www.anaconda.com/products/distribution#download-section).
+
+### **Install Anaconda**
+Run the installer:
+```sh
+bash Anaconda3-2024.10-1-Linux-x86_64.sh
+```
+- Press **Enter** to review the Terms of Service.
+- Type **yes** to accept.
+- Press **Enter** to accept the default installation path or specify a different directory.
+
+### **Initialize Anaconda**
+If prompted, choose:
+- **Yes**: Auto-initialize Conda.
+- **No**: Manually initialize later with:
+  ```sh
+  source ~/anaconda3/bin/activate
+  ```
+
+To apply changes, restart the terminal or run:
+```sh
+source ~/.bashrc
+```
+
+---
+
+## **2. Managing Python Versions with Anaconda**
+Once Anaconda is installed, you can manage multiple Python versions using Conda environments.
+
+### **Check Available Python Versions**
+To see all available Python versions in Conda:
+```sh
+conda search python
+```
+
+### **Create Environments with Specific Python Versions**
+To create a Conda environment with a specific Python version:
+```sh
+conda create --name py310 python=3.10
+```
+or
+```sh
+conda create --name py312 python=3.12
+```
+
+### **Activate and Use a Specific Python Version**
+To switch to an environment with a specific Python version:
+```sh
+conda activate py310
+```
+To verify the version:
+```sh
+python --version
+```
+
+### **Set a Default Python Version**
+If you want a default Python version when opening a new terminal, add this to `~/.bashrc` (or `~/.zshrc` for Zsh users):
+```sh
+echo "conda activate py310" >> ~/.bashrc
+```
+Then apply changes:
+```sh
+source ~/.bashrc
+```
+
+---
+
+## **3. Updating and Removing Python Versions**
+### **Update Python in an Environment**
+To update Python inside a Conda environment:
+```sh
+conda activate py310
+conda install python=3.11
+```
+
+### **Remove an Environment**
+To remove an environment (along with its Python version):
+```sh
+conda remove --name py310 --all
+```
+
+---
