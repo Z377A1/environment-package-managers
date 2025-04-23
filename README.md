@@ -1,5 +1,3 @@
----
-
 # Environment Package Managers
 
 ## WSL (Ubuntu)
