@@ -6,6 +6,8 @@
 
 ### Managing Multiple Java Versions with `update-alternatives`
 
+Java download guide: [Link](https://adoptium.net/installation/linux)
+
 #### 1. Check Installed Java Versions
 ```sh
 update-alternatives --display java
